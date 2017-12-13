@@ -26,6 +26,24 @@ function deleteBook(id) {
     });
 }
 
+function updateBook(id) {
+    var name = "";
+    var changedItem = {};
+    name = $("#txtUpdate_" + id).val();
+    changedItem.name = name;
+    $.ajax({
+        type: "PUT",
+        dataType: "json",
+        url: "api/Book/" + id,
+        data: changedItem,
+        success: function (result) {
+            drawItems(result);
+            cancelEditMode();
+        }
+    });
+}
+
+
 function editBook(id) {
     $("#txtNewBook").hide();
     $("#btnAddBook").hide();
