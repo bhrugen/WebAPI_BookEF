@@ -15,6 +15,17 @@
 
 }
 
+function deleteBook(id) {
+    $.ajax({
+        type: "DELETE",
+        dataType: "json",
+        url: "api/Book/" + id,
+        success: function (result) {
+            drawItems(result);
+        }
+    });
+}
+
 function drawItems(result) {
 
     var $list = $("#bookList").empty();
